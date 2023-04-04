@@ -1,5 +1,4 @@
 #include "acutest.h"
-
 #include "ADTPriorityQueue.h"
 
 void shuffle(int* array[], int size){
