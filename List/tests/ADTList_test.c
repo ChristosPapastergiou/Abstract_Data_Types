@@ -1,5 +1,3 @@
-// ************ Test to check all list's functions ************//
-
 #include "acutest.h"
 #include "ADTList.h"
 

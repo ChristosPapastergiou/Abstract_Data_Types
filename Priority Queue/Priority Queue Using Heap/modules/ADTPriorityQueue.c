@@ -31,7 +31,9 @@ static void node_swap(PriorityQueue pqueue, int node_id1, int node_id2) {
 // Brings back balance to the heap
 static void bubble_up(PriorityQueue pqueue, int node_id) {
 	// Stop when we reach to the root
-	if (node_id == 1) return;
+	if(node_id == 1){
+		return;
+	}
 
 	int parent = node_id / 2;		// Parent node. node_ids are 1-based
 
@@ -49,7 +51,9 @@ static void bubble_down(PriorityQueue pqueue, int node_id){
 	int right_child = left_child + 1;
 
 	int size = pqueue_size(pqueue);
-	if(left_child > size) return;
+	if(left_child > size){
+		return;
+	}
 
 	// Finding the greater child
 	int max_child = left_child;
@@ -104,7 +108,9 @@ void pqueue_remove_max(PriorityQueue pqueue){
 	assert(last_node != 0);
 
 	// Destroy the value that is removed
-	if (pqueue->destroy_value != NULL) pqueue->destroy_value(pqueue_max(pqueue));
+	if(pqueue->destroy_value != NULL){
+		pqueue->destroy_value(pqueue_max(pqueue));
+	}
 
 	// Swapping the last with the first and we delete it
 	node_swap(pqueue, 1, last_node);

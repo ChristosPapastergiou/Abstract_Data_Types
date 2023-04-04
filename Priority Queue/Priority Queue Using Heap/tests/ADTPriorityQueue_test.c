@@ -1,5 +1,4 @@
 #include "acutest.h"
-
 #include "ADTPriorityQueue.h"
 
 void shuffle(int* array[], int size){
@@ -52,12 +51,12 @@ void test_remove(void){
 
 	int N = 10;
 	int** array = malloc(N * sizeof(*array));
-	for (int i = 0; i < N; i++){
+	for(int i = 0; i < N; i++){
 		array[i] = create_int(i);
 	}
 	shuffle(array, N);
 
-	for (int i = 0; i < N; i++){
+	for(int i = 0; i < N; i++){
 		pqueue_insert(pqueue, array[i]);
 	}
 	
