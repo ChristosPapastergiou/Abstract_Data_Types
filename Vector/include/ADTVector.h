@@ -4,10 +4,8 @@
 
 typedef struct vector* Vector;
 
-
 // Creating and returning a vector with all elements null
 // If destroy_value != NULL, then the destroy_value(value) is called every time an element is changing or has been removed
-
 Vector vector_create(int size, DestroyFunc destroy_value);
 
 // Returns vector's size

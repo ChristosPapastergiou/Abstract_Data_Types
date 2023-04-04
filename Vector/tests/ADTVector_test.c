@@ -1,7 +1,5 @@
 #include "acutest.h"
-
 #include "ADTVector.h"
-
 
 void test_create(void){
 	Vector vec = vector_create(0, NULL);

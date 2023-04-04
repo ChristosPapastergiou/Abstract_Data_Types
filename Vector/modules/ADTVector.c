@@ -5,7 +5,6 @@
 
 #define VECTOR_MIN_CAPACITY 10	// Lets take 10 as a minimum capacity to start the vector
 
-
 struct vector_node{
 	Pointer value;				// Node's value
 };
@@ -45,7 +44,7 @@ void vector_set_at(Vector vec, int pos, Pointer value){
 	assert(pos >= 0 && pos < vec->size);
 
 	// If there is a destroy function we are calling it for the old element
-	if (value != vec->array[pos].value && vec->destroy_value != NULL){
+	if(value != vec->array[pos].value && vec->destroy_value != NULL){
 		vec->destroy_value(vec->array[pos].value);
 	}
 
@@ -67,7 +66,9 @@ void vector_remove_last(Vector vec){
 	assert(vec->size != 0);
 
 	// If there is a destroy function we are calling it for the element that will be removed
-	if(vec->destroy_value != NULL) vec->destroy_value(vec->array[vec->size - 1].value);
+	if(vec->destroy_value != NULL){
+		vec->destroy_value(vec->array[vec->size - 1].value);
+	}
 
 	vec->size--;
 
@@ -112,7 +113,7 @@ void vector_destroy(Vector vec){
 }
 
 VectorNode vector_first(Vector vec){
-	if (vec->size == 0){
+	if(vec->size == 0){
 		return VECTOR_BOF;
 	}else{
 		return &vec->array[0];
@@ -120,7 +121,7 @@ VectorNode vector_first(Vector vec){
 }
 
 VectorNode vector_last(Vector vec){
-	if (vec->size == 0){
+	if(vec->size == 0){
 		return VECTOR_EOF;
 	}else{
 		return &vec->array[vec->size-1];
@@ -128,7 +129,7 @@ VectorNode vector_last(Vector vec){
 }
 
 VectorNode vector_next(Vector vec, VectorNode node){
-	if (node == &vec->array[vec->size-1]){
+	if(node == &vec->array[vec->size-1]){
 		return VECTOR_EOF;
 	}else{
 		return node + 1;
@@ -136,7 +137,7 @@ VectorNode vector_next(Vector vec, VectorNode node){
 }
 
 VectorNode vector_previous(Vector vec, VectorNode node){
-	if (node == &vec->array[0]){
+	if(node == &vec->array[0]){
 		return VECTOR_EOF;
 	}else{
 		return node - 1;
