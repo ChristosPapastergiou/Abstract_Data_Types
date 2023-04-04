@@ -61,7 +61,9 @@ Pointer list_node_value(List list, ListNode node){
 
 void list_insert_next(List list, ListNode node, Pointer value){
 	// If node is NULL just insert after dummy node
-	if (node == NULL) node = list->dummy;
+	if(node == NULL){
+		node = list->dummy;
+	}
 
 	// Making a new node
 	ListNode new = malloc(sizeof(*new));
@@ -73,17 +75,23 @@ void list_insert_next(List list, ListNode node, Pointer value){
 
 	// Increase size and making sure about who is the last node
 	list->size++;
-	if (list->last == node) list->last = new;
+	if(list->last == node){
+		list->last = new;
+	}		
 }
 
 void list_remove_next(List list, ListNode node){
 	// If node is NULL jest remove after dummy
-	if (node == NULL) node = list->dummy;
+	if(node == NULL){
+		node = list->dummy;
+	}
 
 	ListNode removed = node->next;
 	assert(removed != NULL);
 
-	if(list->destroy_value != NULL) list->destroy_value(removed->value);
+	if(list->destroy_value != NULL){
+		list->destroy_value(removed->value);
+	}
 
 	// Linking the nodes before free
 	node->next = removed->next;
@@ -92,13 +100,17 @@ void list_remove_next(List list, ListNode node){
 
 	// Like insert
 	list->size--;
-	if(list->last == removed) list->last = node;
+	if(list->last == removed){
+		list->last = node;
+	}
 }
 
 ListNode list_find_node(List list, Pointer value, CompareFunc compare){
 	// Using the compare function to be able to find the node we want
-	for (ListNode node = list->dummy->next; node != NULL; node = node->next){
-		if(compare(value, node->value) == 0) return node;
+	for(ListNode node = list->dummy->next; node != NULL; node = node->next){
+		if(compare(value, node->value) == 0){
+			return node;
+		}
 	}
 	return NULL;	// The item is not in the list
 }
@@ -136,7 +148,9 @@ Pointer list_get_at(List list, int pos){
 		int i = -1;
 		for(ListNode node=list->dummy->next; node!=NULL; node=node->next){
 			i++;
-			if(i == pos) return node->value;
+			if(i == pos){
+				return node->value;
+			}
 		}
 	}
 

@@ -1,8 +1,7 @@
 // ************ Test to check all list's functions ************//
+
 #include "acutest.h"
-
 #include "ADTList.h"
-
 
 void test_create(void){
 	List list = list_create(NULL);
@@ -14,14 +13,13 @@ void test_create(void){
 	list_destroy(list);
 }
 
-
 void test_insert(void){
 	List list = list_create(NULL);
 
 	int N = 1000;
 	int array[N];					
 
-	for (int i = 0; i < N; i++) {
+	for(int i = 0; i < N; i++){
 		list_insert_next(list, LIST_BOF, &array[i]);
 		TEST_CHECK(list_size(list) == (i + 1));						
 		TEST_CHECK(list_node_value(list, list_first(list)) == &array[i]);	
